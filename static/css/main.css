@@ -1,0 +1,9 @@
+.menu-space{ overflow: scroll;padding-bottom:80px;}
+.menu-space::-webkit-scrollbar {
+   width:10px;
+   height:0px;
+ }
+.menu-space::-webkit-scrollbar-thumb:vertical{
+    background-color: #333;
+    -webkit-border-radius: 6px;
+}

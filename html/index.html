@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1">
+	<title>E键广告</title>
+	<link href="../static/css/bootstrap.css" rel="stylesheet">
+	<link href="../static/fonts/font-awesome-4/css/font-awesome.min.css" rel="stylesheet">
+	<link href="../static/css/style.css" rel="stylesheet">
+	<link href="../static/css/main.css" rel="stylesheet">
+	<!-- JavaScript -->
+	<script src="../static/js/sea.js"></script>
+    <script src="../static/js/sea_config.js"></script>
+</head>
+
+
+<body>
+<style>
+.raffle{transform: rotate(0deg);transform-origin:50% 50%;transition:transform 3s;transition-timing-function: ease;}
+@media (max-width:750px) {.raffle img{width:100%;}}
+.animation{transform: rotate(360deg); }
+.needle{ position:absolute; top:50%;left:50%;margin-top:-145px; margin-left:-73.5px;}
+.chunk{ position:absolute;width:147px;height:147px; top:50%;left:50%;margin-top:-65px; margin-left:-73.5px;cursor:pointer;}
+</style>
+
+  
+     <div id="app">
+      <div class="" style="width:500px;height:500px; background:#67C23A"></div>
+      <el-button @click="visible = true">Button</el-button>
+<el-radio v-model="radio" label="1">备选项</el-radio>
+  <el-radio v-model="radio" label="2">备选项</el-radio>
+    </div>
+    <input type="file" id="picker">
+    <img id="image">
+    <script>
+        window.onload = function() {
+            var output = document.getElementById("output");
+            document.getElementById("picker").onchange = function () {
+                var file = this.files[0];
+                output.innerText = '';
+				console.log(file,13245646)
+                if(file.size > 1024*1024) {
+                    output.innerText = 'file size great than 1M';
+                    return;
+                }
+                var xhr = new XMLHttpRequest();
+                xhr.onload = function(d) {
+                    output.innerText = d.currentTarget.response;
+                };
+                xhr.onerror = function(err) {
+                    output.innerText = 'fail:' + err.toString();
+                };
+				
+                xhr.open('POST', '/upload');
+                var fd = new window.FormData();
+                fd.append('file', file);
+                xhr.send(fd);
+            };
+        };
+		
+    </script>
+    <pre id="output"></pre>
+  
+     <script>
+        // vue阻止事件冒泡 @click.stop="click()"
+        // vue 阻止默认行为 @click.prevent="click()"
+        // vue 只执行一次 @click.once="click()"
+		
+     	seajs.use(['vue','element-ui','jquery'],function(){
+			
+			
+    window.vue1 = new Vue ({
+     			el:'#app',
+     			data:{
+					checked:true,
+					input: 'sdasdsadasw',
+					value:'sadsadsad',
+					 radio: '1'
+					
+     			},
+     			mounted:function(){
+     				var _this = this;
+     				this.$nextTick(function(){
+                       console.log(_this.list,vue1.u);
+     				});
+     				 // 移动端下拉更新数据
+     				// window.addEventListener('scroll', function(){
+     				// 	var lazyheight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());
+     				// 	if (($(document).height() - 150 <= lazyheight) && _this.runfalg) {
+     				// 		_this.runfalg = false;
+     				// 		_this.loadding = true;
+     				// 	}
+     				// });	
+     			},
+     			methods:{
+                  
+				
+				},
+				
+     			updated:function(){
+					
+     				this.$nextTick(function(){
+						var _this = this;
+						
+		        	// 滑动
+		        	// swiper();
+		        })
+     			}
+     		})
+			
+     	})
+     </script>
+
+  
+  
+  
+<script type="text/javascript" src="../js/common9d2bdea3.js?"></script></body>
+</html>
